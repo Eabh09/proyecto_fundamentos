@@ -227,7 +227,7 @@ class AdafruitFingerprint:
             if result == self.FINGERPRINT_OK:
                 break
             elif result == self.FINGERPRINT_NOFINGER:
-                time.sleep(0.5)
+                time.sleep(0.1)
                 continue
             else:
                 return None
@@ -243,7 +243,7 @@ class AdafruitFingerprint:
         
         if result == self.FINGERPRINT_OK:
             print(f"✅ Huella encontrada: ID {finger_id}, Confianza {confidence}")
-            return finger_id
+            return True
         else:
             print("❌ Huella no encontrada")
             return None
@@ -267,10 +267,8 @@ class AdafruitFingerprint:
         if self.image2Tz(1) != self.FINGERPRINT_OK:
             raise Exception("Error convirtiendo primera imagen")
         
-        print("2. Levanta el dedo...")
         time.sleep(1)
         
-        print("3. Vuelve a colocar el mismo dedo...")
         for i in range(10):
             result = self.getImage()
             if result == self.FINGERPRINT_OK:
@@ -292,6 +290,7 @@ class AdafruitFingerprint:
             raise Exception("Error guardando modelo")
         
         print(f"✅ Huella registrada en posición {location}")
+        
         return True
 
 def create_fingerprint_sensor(tx_pin=17, rx_pin=16, baudrate=57600):
@@ -324,12 +323,11 @@ def auto_detect_fingerprint():
 finger = auto_detect_fingerprint()
 
 # Registrar huella
-#finger.enroll_finger(1)
+#finger.enroll_finger(4)
 
-# Verificar huella
-while True:
-    finger_id = finger.get_fingerprint()
-    if finger_id:
-        print(f"Bienvenido usuario {finger_id}")
-    time.sleep(1)
-    
+ #Verificar huella
+#while True:
+   # finger_id = finger.get_fingerprint()
+    #if finger_id:
+     #   print(f"Bienvenido usuario {finger_id}")
+    #time.sleep(1)
