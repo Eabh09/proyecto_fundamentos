@@ -5,8 +5,8 @@
 #include "base64.h"  // Para codificar imagen
 
 // WiFi
-const char* ssid = "Kevin";
-const char* password = "     ";
+const char* ssid = "Kevin"; //Editar
+const char* password = "     ";  //Editar
 
 // WebSocket
 WebSocketsClient webSocket;
@@ -87,6 +87,7 @@ void setup() {
   }
 
   // WebSocket al servidor Node-RED
+  //Editar esto
   webSocket.begin("34.172.41.136", 1880, "/ws-cam"); // Interior
   webSocket.begin("34.172.41.136", 1880, "/ws-camfront"); // Frente
   webSocket.begin("34.172.41.136", 1880, "/ws-camrear"); // Atras
