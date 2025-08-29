@@ -5,7 +5,7 @@
 #include "base64.h"  // Para codificar imagen
 
 // WiFi
-const char* ssid = "Kevin"; //Editar
+const char* ssid = "Kevin"; //Edita
 const char* password = "     ";  //Editar
 
 // WebSocket
